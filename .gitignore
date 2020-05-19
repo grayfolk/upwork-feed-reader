@@ -1,0 +1,16 @@
+.idea/
+/coverage/
+/vendor/
+/logs/*
+!/logs/README.md
+/var/cache/*
+/generated-conf/config.php
+/.env
+/propel.php
+/.buildpath
+/.project
+/.settings/com.zend.php.remoteproject.core.prefs
+/.settings/org.eclipse.php.core.prefs
+/.settings/org.eclipse.php.debug.core.Debug_Process_Preferences.prefs
+/.settings/org.eclipse.php.server.core.phpServersPrefs.prefs
+/.settings/org.eclipse.wst.validation.prefs

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="default" defaultIdMethod="native" namespace="\App\Model" defaultPhpNamingMethod="underscore">
+  <table name="job" idMethod="native" phpName="Job" namespace="\App\Model">
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="link" phpName="Link" type="VARCHAR" required="true"/>
+    <column name="title" phpName="Title" type="VARCHAR" required="true"/>
+    <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
+    <column name="budget" phpName="Budget" type="INTEGER"/>
+    <column name="category" phpName="Category" type="VARCHAR" required="true"/>
+    <column name="country" phpName="Country" type="VARCHAR" required="true"/>
+    <column name="is_deleted" phpName="IsDeleted" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+    <column name="is_saved" phpName="IsSaved" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+    <column name="posted" phpName="Posted" type="TIMESTAMP" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="job_skill" idMethod="native" phpName="JobSkill" namespace="\App\Model">
+    <column name="job_id" phpName="JobId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="skill_id" phpName="SkillId" type="INTEGER" primaryKey="true" required="true"/>
+    <foreign-key foreignTable="job" name="job_skill_ibfk_1" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="job_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key foreignTable="skill" name="job_skill_ibfk_2" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="skill_id" foreign="id"/>
+    </foreign-key>
+    <index name="skill_id">
+      <index-column name="skill_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="skill" idMethod="native" phpName="Skill" namespace="\App\Model">
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="title" phpName="Title" type="VARCHAR" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+</database>
